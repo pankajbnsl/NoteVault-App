@@ -21,19 +21,19 @@ const { authenticateToken } = require('./utilities')
 
 app.use(express.json());
 
-app.use(
-    cors({
-        origin: "*",
-    })
-);
-
 // app.use(
 //     cors({
-//         origin: "https://notevault-app-ui.onrender.com", // Allow only your frontend domain
-//         methods: ["GET", "POST", "PUT", "DELETE"],
-//         credentials: true, // if you're using cookies or HTTP authentication
+//         origin: "*",
 //     })
 // );
+
+app.use(
+    cors({
+        origin: "https://notevault-app-ui.onrender.com", // Allow only your frontend domain
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true, // if you're using cookies or HTTP authentication
+    })
+);
 
 app.get("/", (req, res) => {
     res.json({data: "Hello Pankaj"})
