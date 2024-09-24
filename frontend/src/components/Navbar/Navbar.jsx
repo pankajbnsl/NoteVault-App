@@ -9,7 +9,7 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch}) => {
 
   const onLogout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   }
 
   const handleSearch = () => {
@@ -27,12 +27,12 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch}) => {
   return (
    <div className='bg-white flex items-center justify-between px-6 py-2 drop-shadow'>
     <h2 className='text-xl font-medium text-black py-2'>NoteVault</h2>
-    <SearchBar value={searchQuery} onChange={({target}) => {
+    {userInfo ? (<SearchBar value={searchQuery} onChange={({target}) => {
       setSearchQuery(target.value);
     }}
     handleSearch={handleSearch}
     onClearSearch={onClearSearch}
-    />
+    />) : ""}
     {userInfo ? (<ProfileInfo userInfo={userInfo} onLogout={onLogout}/>) : ""}
    </div>
   )
